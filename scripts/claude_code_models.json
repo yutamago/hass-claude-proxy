@@ -1,0 +1,53 @@
+{
+  "agent_sdk_version": "0.3.332",
+  "models": [
+    {
+      "id": "claude-fable-5-2",
+      "display_name": "Fable",
+      "effort": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "adaptive": true
+    },
+    {
+      "id": "claude-haiku-5-5",
+      "display_name": "Haiku",
+      "effort": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "adaptive": true
+    },
+    {
+      "id": "claude-opus-5-5",
+      "display_name": "Opus",
+      "effort": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "adaptive": true
+    },
+    {
+      "id": "claude-sonnet-5-5",
+      "display_name": "Sonnet",
+      "effort": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "adaptive": true
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+name: Model table
+
+# Asks the newest Claude Code which models it knows. When that list changes,
+# regenerates model_capabilities.json, runs the tests and opens a pull request.
+# Installed integrations download the merged table about once a day.
+
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: model-table
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: automation/model-table
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+
+      - name: Read Claude Code's model list
+        working-directory: scripts/claude-code
+        run: |
+          npm install --no-save @anthropic-ai/claude-agent-sdk@latest
+          node probe.mjs
+
+      - name: Ignore runs where only the SDK version changed
+        id: changed
+        run: |
+          old=$(git show HEAD:scripts/claude_code_models.json | jq -S .models)
+          new=$(jq -S .models scripts/claude_code_models.json)
+          if [ "$old" = "$new" ]; then
+            echo "Claude Code's model list is unchanged."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: astral-sh/setup-uv@v6
+        if: steps.changed.outputs.changed == 'true'
+        with:
+          python-version: "3.14"
+
+      - name: Regenerate the table and test it
+        if: steps.changed.outputs.changed == 'true'
+        run: |
+          uv venv
+          uv pip install -r requirements_test.txt
+          uv run --no-sync python scripts/gen_capabilities.py 2>&1 | tee gen.log
+          uv run --no-sync pytest -q -W ignore::DeprecationWarning
+
+      - name: Open or update the pull request
+        if: steps.changed.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C "$BRANCH"
+          git add scripts/claude_code_models.json custom_components/claude_proxy/model_capabilities.json
+          git commit -m "Update model table from Claude Code $(jq -r .agent_sdk_version scripts/claude_code_models.json)"
+          git push --force origin "$BRANCH"
+          body=$(printf 'Claude Code reports a different model list.\n\n```\n%s\n```\n\nGenerator output:\n\n```\n%s\n```\n\nTests passed in the workflow run. Merging publishes the table to installed integrations within a day.' \
+            "$(jq -r '.models[] | "\(.id): effort \(.effort | join(",")), adaptive \(.adaptive)"' scripts/claude_code_models.json)" \
+            "$(cat gen.log)")
+          if gh pr view "$BRANCH" --json state --jq .state 2>/dev/null | grep -q OPEN; then
+            gh pr edit "$BRANCH" --body "$body"
+          else
+            gh pr create --head "$BRANCH" --base main --title "Update model table from Claude Code" --body "$body"
+          fi

@@ -1,1421 +1,1442 @@
 {
-  "claude-fable-5": {
-    "line": "fable",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+  "version": 1,
+  "models": {
+    "claude-fable-5": {
+      "line": "fable",
+      "source": "home-assistant",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": true
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": true
-        },
-        "low": {
-          "supported": true
-        },
-        "max": {
-          "supported": true
-        },
-        "medium": {
-          "supported": true
-        },
-        "supported": true,
-        "xhigh": {
-          "supported": true
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
-          "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
+        "context_management": {
+          "clear_thinking_20251015": {
             "supported": true
           },
-          "between_tools": {
-            "supported": false
+          "clear_tool_uses_20250919": {
+            "supported": true
           },
-          "disabled": {
-            "supported": false
+          "compact_20260112": {
+            "supported": true
           },
-          "enabled": {
-            "supported": false
+          "supported": true
+        },
+        "effort": {
+          "high": {
+            "supported": true
+          },
+          "low": {
+            "supported": true
+          },
+          "max": {
+            "supported": true
+          },
+          "medium": {
+            "supported": true
+          },
+          "supported": true,
+          "xhigh": {
+            "supported": true
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
+            "supported": true
+          },
+          "supported": true,
+          "web_search": {
+            "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": true
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": false
+            },
+            "enabled": {
+              "supported": false
+            }
           }
         }
       }
-    }
-  },
-  "claude-fable-5-1": {
-    "line": "fable",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-fable-5-1": {
+      "line": "fable",
+      "source": "home-assistant",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": true
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": true
-        },
-        "low": {
-          "supported": true
-        },
-        "max": {
-          "supported": true
-        },
-        "medium": {
-          "supported": true
-        },
-        "supported": true,
-        "xhigh": {
-          "supported": true
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
-          "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
+        "context_management": {
+          "clear_thinking_20251015": {
             "supported": true
           },
-          "between_tools": {
-            "supported": false
+          "clear_tool_uses_20250919": {
+            "supported": true
           },
-          "disabled": {
-            "supported": false
+          "compact_20260112": {
+            "supported": true
           },
-          "enabled": {
-            "supported": false
+          "supported": true
+        },
+        "effort": {
+          "high": {
+            "supported": true
+          },
+          "low": {
+            "supported": true
+          },
+          "max": {
+            "supported": true
+          },
+          "medium": {
+            "supported": true
+          },
+          "supported": true,
+          "xhigh": {
+            "supported": true
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
+            "supported": true
+          },
+          "supported": true,
+          "web_search": {
+            "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": true
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": false
+            },
+            "enabled": {
+              "supported": false
+            }
           }
         }
       }
-    }
-  },
-  "claude-fable-5-2": {
-    "line": "fable",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-fable-5-2": {
+      "line": "fable",
+      "source": "claude-code (template claude-fable-5-1)",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": true
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": true
-        },
-        "low": {
-          "supported": true
-        },
-        "max": {
-          "supported": true
-        },
-        "medium": {
-          "supported": true
-        },
-        "supported": true,
-        "xhigh": {
-          "supported": true
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
-          "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
+        "context_management": {
+          "clear_thinking_20251015": {
             "supported": true
           },
-          "between_tools": {
-            "supported": false
+          "clear_tool_uses_20250919": {
+            "supported": true
           },
-          "disabled": {
-            "supported": false
+          "compact_20260112": {
+            "supported": true
           },
-          "enabled": {
-            "supported": false
+          "supported": true
+        },
+        "effort": {
+          "high": {
+            "supported": true
+          },
+          "low": {
+            "supported": true
+          },
+          "max": {
+            "supported": true
+          },
+          "medium": {
+            "supported": true
+          },
+          "supported": true,
+          "xhigh": {
+            "supported": true
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
+            "supported": true
+          },
+          "supported": true,
+          "web_search": {
+            "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": true
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": false
+            },
+            "enabled": {
+              "supported": false
+            }
           }
         }
       }
-    }
-  },
-  "claude-haiku-4-5": {
-    "line": "haiku",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": false
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-haiku-4-5": {
+      "line": "haiku",
+      "source": "home-assistant",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": false
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": false
-        },
-        "low": {
-          "supported": false
-        },
-        "max": {
-          "supported": false
-        },
-        "medium": {
-          "supported": false
-        },
-        "supported": false,
-        "xhigh": {
-          "supported": false
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
+          "supported": false
+        },
+        "context_management": {
+          "clear_thinking_20251015": {
+            "supported": true
+          },
+          "clear_tool_uses_20250919": {
+            "supported": true
+          },
+          "compact_20260112": {
+            "supported": false
+          },
           "supported": true
         },
-        "supported": true,
-        "web_search": {
+        "effort": {
+          "high": {
+            "supported": false
+          },
+          "low": {
+            "supported": false
+          },
+          "max": {
+            "supported": false
+          },
+          "medium": {
+            "supported": false
+          },
+          "supported": false,
+          "xhigh": {
+            "supported": false
+          }
+        },
+        "image_input": {
           "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
-            "supported": false
-          },
-          "between_tools": {
-            "supported": false
-          },
-          "disabled": {
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
             "supported": true
           },
-          "enabled": {
+          "supported": true,
+          "web_search": {
             "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": false
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": true
+            },
+            "enabled": {
+              "supported": true
+            }
           }
         }
       }
-    }
-  },
-  "claude-haiku-5-5": {
-    "line": "haiku",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-haiku-5-5": {
+      "line": "haiku",
+      "source": "home-assistant",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": true
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": true
-        },
-        "low": {
-          "supported": true
-        },
-        "max": {
-          "supported": true
-        },
-        "medium": {
-          "supported": true
-        },
-        "supported": true,
-        "xhigh": {
-          "supported": true
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
+        "context_management": {
+          "clear_thinking_20251015": {
+            "supported": true
+          },
+          "clear_tool_uses_20250919": {
+            "supported": true
+          },
+          "compact_20260112": {
+            "supported": true
+          },
           "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
+        },
+        "effort": {
+          "high": {
             "supported": true
           },
-          "between_tools": {
-            "supported": false
-          },
-          "disabled": {
+          "low": {
             "supported": true
           },
-          "enabled": {
-            "supported": false
+          "max": {
+            "supported": true
+          },
+          "medium": {
+            "supported": true
+          },
+          "supported": true,
+          "xhigh": {
+            "supported": true
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
+            "supported": true
+          },
+          "supported": true,
+          "web_search": {
+            "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": true
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": true
+            },
+            "enabled": {
+              "supported": false
+            }
           }
         }
       }
-    }
-  },
-  "claude-mythos-5": {
-    "line": "fable",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-mythos-5": {
+      "line": "fable",
+      "source": "alias of claude-fable-5",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": true
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": true
-        },
-        "low": {
-          "supported": true
-        },
-        "max": {
-          "supported": true
-        },
-        "medium": {
-          "supported": true
-        },
-        "supported": true,
-        "xhigh": {
-          "supported": true
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
-          "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
+        "context_management": {
+          "clear_thinking_20251015": {
             "supported": true
           },
-          "between_tools": {
-            "supported": false
+          "clear_tool_uses_20250919": {
+            "supported": true
           },
-          "disabled": {
-            "supported": false
+          "compact_20260112": {
+            "supported": true
           },
-          "enabled": {
-            "supported": false
+          "supported": true
+        },
+        "effort": {
+          "high": {
+            "supported": true
+          },
+          "low": {
+            "supported": true
+          },
+          "max": {
+            "supported": true
+          },
+          "medium": {
+            "supported": true
+          },
+          "supported": true,
+          "xhigh": {
+            "supported": true
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
+            "supported": true
+          },
+          "supported": true,
+          "web_search": {
+            "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": true
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": false
+            },
+            "enabled": {
+              "supported": false
+            }
           }
         }
       }
-    }
-  },
-  "claude-mythos-5-1": {
-    "line": "fable",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-mythos-5-1": {
+      "line": "fable",
+      "source": "alias of claude-fable-5-1",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": true
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": true
-        },
-        "low": {
-          "supported": true
-        },
-        "max": {
-          "supported": true
-        },
-        "medium": {
-          "supported": true
-        },
-        "supported": true,
-        "xhigh": {
-          "supported": true
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
-          "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
+        "context_management": {
+          "clear_thinking_20251015": {
             "supported": true
           },
-          "between_tools": {
-            "supported": false
+          "clear_tool_uses_20250919": {
+            "supported": true
           },
-          "disabled": {
-            "supported": false
+          "compact_20260112": {
+            "supported": true
           },
-          "enabled": {
-            "supported": false
+          "supported": true
+        },
+        "effort": {
+          "high": {
+            "supported": true
+          },
+          "low": {
+            "supported": true
+          },
+          "max": {
+            "supported": true
+          },
+          "medium": {
+            "supported": true
+          },
+          "supported": true,
+          "xhigh": {
+            "supported": true
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
+            "supported": true
+          },
+          "supported": true,
+          "web_search": {
+            "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": true
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": false
+            },
+            "enabled": {
+              "supported": false
+            }
           }
         }
       }
-    }
-  },
-  "claude-mythos-5-2": {
-    "line": "fable",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-mythos-5-2": {
+      "line": "fable",
+      "source": "alias of claude-fable-5-1",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": true
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": true
-        },
-        "low": {
-          "supported": true
-        },
-        "max": {
-          "supported": true
-        },
-        "medium": {
-          "supported": true
-        },
-        "supported": true,
-        "xhigh": {
-          "supported": true
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
-          "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
+        "context_management": {
+          "clear_thinking_20251015": {
             "supported": true
           },
-          "between_tools": {
-            "supported": false
+          "clear_tool_uses_20250919": {
+            "supported": true
           },
-          "disabled": {
-            "supported": false
+          "compact_20260112": {
+            "supported": true
           },
-          "enabled": {
-            "supported": false
+          "supported": true
+        },
+        "effort": {
+          "high": {
+            "supported": true
+          },
+          "low": {
+            "supported": true
+          },
+          "max": {
+            "supported": true
+          },
+          "medium": {
+            "supported": true
+          },
+          "supported": true,
+          "xhigh": {
+            "supported": true
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
+            "supported": true
+          },
+          "supported": true,
+          "web_search": {
+            "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": true
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": false
+            },
+            "enabled": {
+              "supported": false
+            }
           }
         }
       }
-    }
-  },
-  "claude-opus-4-5": {
-    "line": "opus",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-opus-4-5": {
+      "line": "opus",
+      "source": "home-assistant",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": false
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": true
-        },
-        "low": {
-          "supported": true
-        },
-        "max": {
-          "supported": false
-        },
-        "medium": {
-          "supported": true
-        },
-        "supported": true,
-        "xhigh": {
-          "supported": false
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
+        "context_management": {
+          "clear_thinking_20251015": {
+            "supported": true
+          },
+          "clear_tool_uses_20250919": {
+            "supported": true
+          },
+          "compact_20260112": {
+            "supported": false
+          },
           "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
-            "supported": false
-          },
-          "between_tools": {
-            "supported": false
-          },
-          "disabled": {
+        },
+        "effort": {
+          "high": {
             "supported": true
           },
-          "enabled": {
+          "low": {
             "supported": true
+          },
+          "max": {
+            "supported": false
+          },
+          "medium": {
+            "supported": true
+          },
+          "supported": true,
+          "xhigh": {
+            "supported": false
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
+            "supported": true
+          },
+          "supported": true,
+          "web_search": {
+            "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": false
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": true
+            },
+            "enabled": {
+              "supported": true
+            }
           }
         }
       }
-    }
-  },
-  "claude-opus-4-6": {
-    "line": "opus",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-opus-4-6": {
+      "line": "opus",
+      "source": "home-assistant",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": true
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": true
-        },
-        "low": {
-          "supported": true
-        },
-        "max": {
-          "supported": true
-        },
-        "medium": {
-          "supported": true
-        },
-        "supported": true,
-        "xhigh": {
-          "supported": false
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
+        "context_management": {
+          "clear_thinking_20251015": {
+            "supported": true
+          },
+          "clear_tool_uses_20250919": {
+            "supported": true
+          },
+          "compact_20260112": {
+            "supported": true
+          },
           "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
+        },
+        "effort": {
+          "high": {
             "supported": true
           },
-          "between_tools": {
+          "low": {
+            "supported": true
+          },
+          "max": {
+            "supported": true
+          },
+          "medium": {
+            "supported": true
+          },
+          "supported": true,
+          "xhigh": {
             "supported": false
-          },
-          "disabled": {
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
             "supported": true
           },
-          "enabled": {
+          "supported": true,
+          "web_search": {
             "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": true
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": true
+            },
+            "enabled": {
+              "supported": true
+            }
           }
         }
       }
-    }
-  },
-  "claude-opus-4-7": {
-    "line": "opus",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-opus-4-7": {
+      "line": "opus",
+      "source": "home-assistant",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": true
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": true
-        },
-        "low": {
-          "supported": true
-        },
-        "max": {
-          "supported": true
-        },
-        "medium": {
-          "supported": true
-        },
-        "supported": true,
-        "xhigh": {
-          "supported": true
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
+        "context_management": {
+          "clear_thinking_20251015": {
+            "supported": true
+          },
+          "clear_tool_uses_20250919": {
+            "supported": true
+          },
+          "compact_20260112": {
+            "supported": true
+          },
           "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
+        },
+        "effort": {
+          "high": {
             "supported": true
           },
-          "between_tools": {
-            "supported": false
-          },
-          "disabled": {
+          "low": {
             "supported": true
           },
-          "enabled": {
-            "supported": false
+          "max": {
+            "supported": true
+          },
+          "medium": {
+            "supported": true
+          },
+          "supported": true,
+          "xhigh": {
+            "supported": true
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
+            "supported": true
+          },
+          "supported": true,
+          "web_search": {
+            "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": true
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": true
+            },
+            "enabled": {
+              "supported": false
+            }
           }
         }
       }
-    }
-  },
-  "claude-opus-4-8": {
-    "line": "opus",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-opus-4-8": {
+      "line": "opus",
+      "source": "home-assistant",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": true
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": true
-        },
-        "low": {
-          "supported": true
-        },
-        "max": {
-          "supported": true
-        },
-        "medium": {
-          "supported": true
-        },
-        "supported": true,
-        "xhigh": {
-          "supported": true
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
+        "context_management": {
+          "clear_thinking_20251015": {
+            "supported": true
+          },
+          "clear_tool_uses_20250919": {
+            "supported": true
+          },
+          "compact_20260112": {
+            "supported": true
+          },
           "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
+        },
+        "effort": {
+          "high": {
             "supported": true
           },
-          "between_tools": {
-            "supported": false
-          },
-          "disabled": {
+          "low": {
             "supported": true
           },
-          "enabled": {
-            "supported": false
+          "max": {
+            "supported": true
+          },
+          "medium": {
+            "supported": true
+          },
+          "supported": true,
+          "xhigh": {
+            "supported": true
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
+            "supported": true
+          },
+          "supported": true,
+          "web_search": {
+            "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": true
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": true
+            },
+            "enabled": {
+              "supported": false
+            }
           }
         }
       }
-    }
-  },
-  "claude-opus-5": {
-    "line": "opus",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-opus-5": {
+      "line": "opus",
+      "source": "home-assistant",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": true
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": true
-        },
-        "low": {
-          "supported": true
-        },
-        "max": {
-          "supported": true
-        },
-        "medium": {
-          "supported": true
-        },
-        "supported": true,
-        "xhigh": {
-          "supported": true
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
+        "context_management": {
+          "clear_thinking_20251015": {
+            "supported": true
+          },
+          "clear_tool_uses_20250919": {
+            "supported": true
+          },
+          "compact_20260112": {
+            "supported": true
+          },
           "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
+        },
+        "effort": {
+          "high": {
             "supported": true
           },
-          "between_tools": {
-            "supported": false
-          },
-          "disabled": {
+          "low": {
             "supported": true
           },
-          "enabled": {
-            "supported": false
+          "max": {
+            "supported": true
+          },
+          "medium": {
+            "supported": true
+          },
+          "supported": true,
+          "xhigh": {
+            "supported": true
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
+            "supported": true
+          },
+          "supported": true,
+          "web_search": {
+            "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": true
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": true
+            },
+            "enabled": {
+              "supported": false
+            }
           }
         }
       }
-    }
-  },
-  "claude-opus-5-5": {
-    "line": "opus",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-opus-5-5": {
+      "line": "opus",
+      "source": "home-assistant",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": true
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": true
-        },
-        "low": {
-          "supported": true
-        },
-        "max": {
-          "supported": true
-        },
-        "medium": {
-          "supported": true
-        },
-        "supported": true,
-        "xhigh": {
-          "supported": true
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
-          "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
+        "context_management": {
+          "clear_thinking_20251015": {
             "supported": true
           },
-          "between_tools": {
-            "supported": false
+          "clear_tool_uses_20250919": {
+            "supported": true
           },
-          "disabled": {
-            "supported": false
+          "compact_20260112": {
+            "supported": true
           },
-          "enabled": {
-            "supported": false
+          "supported": true
+        },
+        "effort": {
+          "high": {
+            "supported": true
+          },
+          "low": {
+            "supported": true
+          },
+          "max": {
+            "supported": true
+          },
+          "medium": {
+            "supported": true
+          },
+          "supported": true,
+          "xhigh": {
+            "supported": true
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
+            "supported": true
+          },
+          "supported": true,
+          "web_search": {
+            "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": true
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": false
+            },
+            "enabled": {
+              "supported": false
+            }
           }
         }
       }
-    }
-  },
-  "claude-sonnet-4-5": {
-    "line": "sonnet",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-sonnet-4-5": {
+      "line": "sonnet",
+      "source": "home-assistant",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": false
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": false
-        },
-        "low": {
-          "supported": false
-        },
-        "max": {
-          "supported": false
-        },
-        "medium": {
-          "supported": false
-        },
-        "supported": false,
-        "xhigh": {
-          "supported": false
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
+        "context_management": {
+          "clear_thinking_20251015": {
+            "supported": true
+          },
+          "clear_tool_uses_20250919": {
+            "supported": true
+          },
+          "compact_20260112": {
+            "supported": false
+          },
           "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
+        },
+        "effort": {
+          "high": {
             "supported": false
           },
-          "between_tools": {
+          "low": {
             "supported": false
           },
-          "disabled": {
+          "max": {
+            "supported": false
+          },
+          "medium": {
+            "supported": false
+          },
+          "supported": false,
+          "xhigh": {
+            "supported": false
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
             "supported": true
           },
-          "enabled": {
+          "supported": true,
+          "web_search": {
             "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": false
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": true
+            },
+            "enabled": {
+              "supported": true
+            }
           }
         }
       }
-    }
-  },
-  "claude-sonnet-4-6": {
-    "line": "sonnet",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-sonnet-4-6": {
+      "line": "sonnet",
+      "source": "home-assistant",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": true
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": true
-        },
-        "low": {
-          "supported": true
-        },
-        "max": {
-          "supported": true
-        },
-        "medium": {
-          "supported": true
-        },
-        "supported": true,
-        "xhigh": {
-          "supported": false
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
+        "context_management": {
+          "clear_thinking_20251015": {
+            "supported": true
+          },
+          "clear_tool_uses_20250919": {
+            "supported": true
+          },
+          "compact_20260112": {
+            "supported": true
+          },
           "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
+        },
+        "effort": {
+          "high": {
             "supported": true
           },
-          "between_tools": {
+          "low": {
+            "supported": true
+          },
+          "max": {
+            "supported": true
+          },
+          "medium": {
+            "supported": true
+          },
+          "supported": true,
+          "xhigh": {
             "supported": false
-          },
-          "disabled": {
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
             "supported": true
           },
-          "enabled": {
+          "supported": true,
+          "web_search": {
             "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": true
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": true
+            },
+            "enabled": {
+              "supported": true
+            }
           }
         }
       }
-    }
-  },
-  "claude-sonnet-5": {
-    "line": "sonnet",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-sonnet-5": {
+      "line": "sonnet",
+      "source": "home-assistant",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": true
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": true
-        },
-        "low": {
-          "supported": true
-        },
-        "max": {
-          "supported": true
-        },
-        "medium": {
-          "supported": true
-        },
-        "supported": true,
-        "xhigh": {
-          "supported": true
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
+        "context_management": {
+          "clear_thinking_20251015": {
+            "supported": true
+          },
+          "clear_tool_uses_20250919": {
+            "supported": true
+          },
+          "compact_20260112": {
+            "supported": true
+          },
           "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
+        },
+        "effort": {
+          "high": {
             "supported": true
           },
-          "between_tools": {
-            "supported": false
-          },
-          "disabled": {
+          "low": {
             "supported": true
           },
-          "enabled": {
-            "supported": false
+          "max": {
+            "supported": true
+          },
+          "medium": {
+            "supported": true
+          },
+          "supported": true,
+          "xhigh": {
+            "supported": true
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
+            "supported": true
+          },
+          "supported": true,
+          "web_search": {
+            "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": true
+            },
+            "between_tools": {
+              "supported": false
+            },
+            "disabled": {
+              "supported": true
+            },
+            "enabled": {
+              "supported": false
+            }
           }
         }
       }
-    }
-  },
-  "claude-sonnet-5-5": {
-    "line": "sonnet",
-    "capabilities": {
-      "batch": {
-        "supported": true
-      },
-      "citations": {
-        "supported": true
-      },
-      "code_execution": {
-        "supported": true
-      },
-      "context_management": {
-        "clear_thinking_20251015": {
+    },
+    "claude-sonnet-5-5": {
+      "line": "sonnet",
+      "source": "home-assistant",
+      "capabilities": {
+        "batch": {
           "supported": true
         },
-        "clear_tool_uses_20250919": {
+        "citations": {
           "supported": true
         },
-        "compact_20260112": {
-          "supported": true
-        },
-        "supported": true
-      },
-      "effort": {
-        "high": {
-          "supported": true
-        },
-        "low": {
-          "supported": true
-        },
-        "max": {
-          "supported": true
-        },
-        "medium": {
-          "supported": true
-        },
-        "supported": true,
-        "xhigh": {
-          "supported": true
-        }
-      },
-      "image_input": {
-        "supported": true
-      },
-      "pdf_input": {
-        "supported": true
-      },
-      "server_tools": {
         "code_execution": {
           "supported": true
         },
-        "supported": true,
-        "web_search": {
+        "context_management": {
+          "clear_thinking_20251015": {
+            "supported": true
+          },
+          "clear_tool_uses_20250919": {
+            "supported": true
+          },
+          "compact_20260112": {
+            "supported": true
+          },
           "supported": true
-        }
-      },
-      "structured_outputs": {
-        "supported": true
-      },
-      "thinking": {
-        "supported": true,
-        "types": {
-          "adaptive": {
+        },
+        "effort": {
+          "high": {
             "supported": true
           },
-          "between_tools": {
+          "low": {
             "supported": true
           },
-          "disabled": {
-            "supported": false
+          "max": {
+            "supported": true
           },
-          "enabled": {
-            "supported": false
+          "medium": {
+            "supported": true
+          },
+          "supported": true,
+          "xhigh": {
+            "supported": true
+          }
+        },
+        "image_input": {
+          "supported": true
+        },
+        "pdf_input": {
+          "supported": true
+        },
+        "server_tools": {
+          "code_execution": {
+            "supported": true
+          },
+          "supported": true,
+          "web_search": {
+            "supported": true
+          }
+        },
+        "structured_outputs": {
+          "supported": true
+        },
+        "thinking": {
+          "supported": true,
+          "types": {
+            "adaptive": {
+              "supported": true
+            },
+            "between_tools": {
+              "supported": true
+            },
+            "disabled": {
+              "supported": false
+            },
+            "enabled": {
+              "supported": false
+            }
           }
         }
       }

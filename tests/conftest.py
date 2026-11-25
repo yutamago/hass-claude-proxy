@@ -23,6 +23,7 @@ from anthropic.types import (
 )
 from anthropic.types.message_create_params import MessageCreateParamsStreaming
 from anthropic.types.raw_message_delta_event import Delta
+import httpx2
 import pytest
 from pytest_homeassistant.common import MockConfigEntry
 
@@ -116,6 +117,17 @@ async def mock_init_component(
     """Initialize integration."""
     assert await async_setup_component(hass, DOMAIN, {})
     await hass.async_block_till_done()
+
+
+@pytest.fixture(autouse=True)
+def mock_capability_download() -> Generator[AsyncMock]:
+    """Keep tests offline: the capability table download fails by default."""
+    with patch(
+        "custom_components.claude_proxy.proxy.CapabilityTable._async_fetch",
+        new_callable=AsyncMock,
+        side_effect=httpx2.ConnectError("offline in tests"),
+    ) as mock_fetch:
+        yield mock_fetch
 
 
 @pytest.fixture(autouse=True)

@@ -6,6 +6,8 @@ import logging
 from typing import TYPE_CHECKING, Any, cast, override
 
 import anthropic
+import probatio
+
 from homeassistant import data_entry_flow
 from homeassistant.components.zone import ENTITY_ID_HOME
 from homeassistant.config_entries import (
@@ -36,7 +38,6 @@ from homeassistant.helpers.selector import (
     TemplateSelector,
 )
 from homeassistant.helpers.typing import VolDictType
-import probatio
 
 from . import proxy
 from .const import (
@@ -392,7 +393,8 @@ class ConversationSubentryFlowHandler(ConfigSubentryFlow):
                     self.model_info = proxy.normalize_model(
                         await client.models.retrieve(
                             self.options[CONF_CHAT_MODEL], timeout=10.0
-                        )
+                        ),
+                        coordinator.capabilities,
                     )
                 except anthropic.NotFoundError:
                     errors[CONF_CHAT_MODEL] = "model_not_found"

@@ -38,13 +38,16 @@ The built-in integration builds its options from Anthropic's Models API. That AP
 
 So the integration fills in the gaps:
 
-- Missing capabilities come from a bundled table, `model_capabilities.json`. It is generated from the capability data in Home Assistant's own test fixtures, which mirror the Models API. Newer models with the same request shape, such as Claude Fable 5.2, are mapped to an existing entry.
+- Missing capabilities come from a table, `model_capabilities.json`. Most entries come from the capability data in Home Assistant's own test fixtures, which mirror the Models API. Models released after the fixtures come from Claude Code's model list. Claude Code knows each current model's effort levels and whether it supports adaptive thinking, and the rest is copied from the previous model in the same family.
+- The integration ships with a copy of the table and downloads the latest one from this repository about once a day. It keeps the last good download in Home Assistant's storage, so a restart without internet still has it. New models get their options without waiting for a release.
 - A missing lifecycle comes from the Anthropic SDK's list of deprecated models. A model not on that list counts as active.
 - If the proxy returns real capability or lifecycle data, the integration uses it.
 
 Models the table doesn't know, such as non-Claude models the proxy routes in Anthropic format, still work as conversation agents. They don't get thinking or effort options, and they can't be used for AI tasks, which need structured output.
 
 ## Things to know
+
+**It contacts GitHub once a day.** The table download is a plain GET to `raw.githubusercontent.com`, with no data about your setup. If it fails, the integration keeps using the copy it has.
 
 **Server tools depend on the backend.** Web search, web fetch, code execution and tool search run on Anthropic's servers. They work when the proxy forwards to a real Claude account, and I've checked web search and code execution through CLIProxyAPI. If your proxy sends requests to another provider, leave them off.
 
@@ -66,12 +69,26 @@ git switch upstream
 python3 scripts/sync_upstream.py 2026.12.0     # copies files and records the tag in UPSTREAM
 git commit -am "Sync anthropic integration from home-assistant/core 2026.12.0"
 git switch main && git merge upstream
-.venv/bin/python scripts/gen_capabilities.py   # refresh the capability table from new fixtures
+.venv/bin/python scripts/gen_capabilities.py   # rebuild the capability table from the new fixtures
 ```
 
 Then bump `pytest-homeassistant` and `anthropic` in `requirements_test.txt` to the versions that release uses, and `homeassistant` in `hacs.json` if the code needs the newer release.
 
-Run the tests:
+### The model table
+
+A daily workflow (`.github/workflows/models.yml`) asks the newest Claude Code for its model list. It starts Claude Code through the Agent SDK and reads the list before sending any prompt, so it needs no login and costs nothing. When the list changes, it rebuilds the table, runs the tests and opens a pull request. Merging it publishes the table to every installed copy within a day.
+
+To do the same by hand:
+
+```bash
+cd scripts/claude-code && npm install --no-save @anthropic-ai/claude-agent-sdk@latest && node probe.mjs && cd ../..
+.venv/bin/python scripts/gen_capabilities.py
+```
+
+The generator prints a warning when Claude Code and Home Assistant's fixtures disagree about a model. The fixtures win, because they mirror Anthropic's API. Claude Code's data only fills in models the fixtures don't have yet.
+
+### Tests
+
 
 ```bash
 uv venv --python 3.14 && uv pip install -r requirements_test.txt

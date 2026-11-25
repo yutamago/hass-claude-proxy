@@ -7,6 +7,7 @@ from typing import Literal, override
 
 import anthropic
 from anthropic.resources.messages.messages import DEPRECATED_MODELS
+
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_API_KEY, CONF_URL
 from homeassistant.core import HomeAssistant, callback
@@ -88,6 +89,7 @@ class AnthropicCoordinator(DataUpdateCoordinator[list[anthropic.types.ModelInfo]
 
     config_entry: AnthropicConfigEntry
     _client: anthropic.AsyncAnthropic
+    capabilities: proxy.CapabilityTable
 
     def __init__(self, hass: HomeAssistant, config_entry: AnthropicConfigEntry) -> None:
         """Initialize the coordinator."""
@@ -115,7 +117,7 @@ class AnthropicCoordinator(DataUpdateCoordinator[list[anthropic.types.ModelInfo]
             self.config_entry.data[CONF_API_KEY],
             self.config_entry.data.get(CONF_URL),
         )
-        await self.hass.async_add_executor_job(proxy.preload)
+        self.capabilities = await proxy.async_get_table(self.hass)
 
     async def async_update_data(self) -> list[anthropic.types.ModelInfo]:
         """Fetch model list from the API.
@@ -126,6 +128,7 @@ class AnthropicCoordinator(DataUpdateCoordinator[list[anthropic.types.ModelInfo]
         since the previous update, or if a deprecated model's retirement date is past.
         """
         self.update_interval = UPDATE_INTERVAL_DISCONNECTED
+        await self.capabilities.async_refresh()
         active_models = await self._async_get_models(["active"])
         models = self.data or []
         cached_active_models = [
@@ -166,7 +169,9 @@ class AnthropicCoordinator(DataUpdateCoordinator[list[anthropic.types.ModelInfo]
         try:
             result = await self.client.models.list(lifecycle=lifecycle, timeout=10.0)
             # Proxies omit lifecycle/capabilities and ignore the lifecycle filter.
-            return proxy.filter_models([model async for model in result], lifecycle)
+            return proxy.filter_models(
+                [model async for model in result], lifecycle, self.capabilities
+            )
         except anthropic.APITimeoutError as err:
             raise TimeoutError(err.message or str(err)) from err
         except anthropic.AuthenticationError as err:

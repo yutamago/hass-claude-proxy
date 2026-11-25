@@ -8,7 +8,6 @@ from anthropic import AuthenticationError
 from anthropic._models import construct_type
 from anthropic.pagination import AsyncPage
 from anthropic.types import ModelInfo
-from freezegun import freeze_time
 from httpx2 import Request, Response
 import pytest
 from pytest_homeassistant.common import MockConfigEntry
@@ -84,6 +83,12 @@ PROXY_MODELS: list[dict[str, Any]] = [
 ]
 
 
+@pytest.fixture
+async def table(hass: HomeAssistant) -> proxy.CapabilityTable:
+    """Return the loaded capability table (bundled copy only)."""
+    return await proxy.async_get_table(hass)
+
+
 def proxy_model(raw: dict[str, Any]) -> ModelInfo:
     """Parse a raw model the way the SDK does (lenient, missing fields are None)."""
     return construct_type(type_=ModelInfo, value=raw)
@@ -117,7 +122,7 @@ def test_normalize_base_url(url: str, expected: str) -> None:
     assert proxy.normalize_base_url(url) == expected
 
 
-@freeze_time("2026-11-25")
+@pytest.mark.freeze_time("2026-11-25")
 @pytest.mark.parametrize(
     ("model_id", "lifecycle", "line", "has_capabilities"),
     [
@@ -129,19 +134,24 @@ def test_normalize_base_url(url: str, expected: str) -> None:
         ("other-provider-model", "active", None, False),
     ],
 )
-def test_normalize_model(
-    model_id: str, lifecycle: str, line: str | None, has_capabilities: bool
+async def test_normalize_model(
+    table: proxy.CapabilityTable,
+    model_id: str,
+    lifecycle: str,
+    line: str | None,
+    has_capabilities: bool,
 ) -> None:
     """Test filling in lifecycle and capabilities."""
     model = proxy.normalize_model(
-        proxy_model({"id": model_id, "type": "model", "display_name": model_id})
+        proxy_model({"id": model_id, "type": "model", "display_name": model_id}),
+        table,
     )
     assert model.lifecycle == lifecycle
     assert model.line == line
     assert (model.capabilities is not None) is has_capabilities
 
 
-def test_normalize_model_keeps_api_data() -> None:
+async def test_normalize_model_keeps_api_data(table: proxy.CapabilityTable) -> None:
     """Test that data from a real Models API response is left alone."""
     model = proxy_model(
         {
@@ -152,26 +162,28 @@ def test_normalize_model_keeps_api_data() -> None:
             "line": "custom",
         }
     )
-    normalized = proxy.normalize_model(model)
+    normalized = proxy.normalize_model(model, table)
     assert normalized.lifecycle == "deprecated"
     assert normalized.line == "custom"
     assert normalized.capabilities is not None
 
 
-def test_capabilities_match_documented_thinking() -> None:
+async def test_capabilities_match_documented_thinking(
+    table: proxy.CapabilityTable,
+) -> None:
     """Spot-check the generated table against documented model behaviour."""
-    opus = proxy.normalize_model(proxy_model({"id": "claude-opus-5-5"}))
+    opus = proxy.normalize_model(proxy_model({"id": "claude-opus-5-5"}), table)
     assert opus.capabilities is not None
     thinking = opus.capabilities.thinking.types
     assert thinking.adaptive.supported
     assert not thinking.disabled.supported
     assert not thinking.enabled.supported
-    sonnet = proxy.normalize_model(proxy_model({"id": "claude-sonnet-5-5"}))
+    sonnet = proxy.normalize_model(proxy_model({"id": "claude-sonnet-5-5"}), table)
     assert sonnet.capabilities is not None
     assert sonnet.capabilities.thinking.types.between_tools.supported
 
 
-@freeze_time("2026-11-25")
+@pytest.mark.freeze_time("2026-11-25")
 async def test_setup_with_proxy_catalogue(
     hass: HomeAssistant,
     mock_config_entry: MockConfigEntry,
@@ -199,7 +211,7 @@ async def test_setup_with_proxy_catalogue(
     assert str(coordinator.client.base_url) == "http://proxy.test:8317"
 
 
-@freeze_time("2026-11-25")
+@pytest.mark.freeze_time("2026-11-25")
 async def test_ai_task_model_picker_with_proxy(
     hass: HomeAssistant,
     mock_config_entry: MockConfigEntry,

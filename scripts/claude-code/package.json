@@ -1,0 +1,5 @@
+{
+  "private": true,
+  "type": "module",
+  "description": "Reads Claude Code's model list for scripts/gen_capabilities.py"
+}
