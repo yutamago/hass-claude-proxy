@@ -13,13 +13,15 @@ It has the same conversation agent, AI task entity, Assist tools, prompt caching
 
 ## Install
 
-With HACS:
+Home Assistant 2026.11 replaced HACS with the built-in Marketplace:
 
-1. HACS → three-dot menu → **Custom repositories**.
-2. Add `https://github.com/yutamago/hass-claude-proxy` with type **Integration**.
-3. Install **Claude (via proxy)** and restart Home Assistant.
+1. Go to **Settings → Marketplace** and select **Add from link**.
+2. Enter `yutamago/hass-claude-proxy` and select **Add**. The first time, the Marketplace asks you to connect a GitHub account. If it asks for a type, choose **Integration**.
+3. Open **Claude (via proxy)** and install it.
 
-Without HACS, copy `custom_components/claude_proxy` into your Home Assistant `config/custom_components/` directory and restart.
+Don't add the repository under **Settings → Apps**. That's the add-on store, and it answers "not a valid app repository".
+
+To install by hand, download `claude_proxy.zip` from the [latest release](https://github.com/yutamago/hass-claude-proxy/releases/latest), unpack it into `config/custom_components/claude_proxy/`, and restart Home Assistant.
 
 ## Setup
 
