@@ -1,41 +1,50 @@
 {
   "config": {
     "abort": {
-      "already_configured": "Service is already configured"
+      "already_configured": "Service is already configured",
+      "reauth_successful": "Re-authentication was successful",
+      "reconfigure_successful": "Re-configuration was successful"
     },
     "error": {
       "authentication_error": "Invalid authentication",
       "cannot_connect": "Failed to connect",
       "timeout_connect": "Timeout while establishing a connection",
-      "unknown": "Unexpected error"
+      "unknown": "Unexpected error",
+      "invalid_url": "Enter a full http:// or https:// URL"
     },
     "step": {
       "reauth_confirm": {
         "data": {
+          "url": "Proxy URL",
           "api_key": "API key"
         },
         "data_description": {
-          "api_key": "Your Anthropic API key."
+          "url": "Base URL of your Anthropic-compatible proxy, for example `http://192.168.1.50:8317`. A trailing `/v1` is removed.",
+          "api_key": "An API key your proxy accepts (for CLIProxyAPI, one of the `access.api-keys` entries)."
         },
-        "description": "Reauthentication required. Please enter your updated API key."
+        "description": "The proxy rejected the API key. Enter the proxy URL and an updated key."
       },
       "reconfigure": {
         "data": {
+          "url": "Proxy URL",
           "api_key": "API key"
         },
         "data_description": {
-          "api_key": "Your Anthropic API key."
+          "url": "Base URL of your Anthropic-compatible proxy, for example `http://192.168.1.50:8317`. A trailing `/v1` is removed.",
+          "api_key": "An API key your proxy accepts (for CLIProxyAPI, one of the `access.api-keys` entries)."
         },
-        "description": "Enter your updated Anthropic API key."
+        "description": "Update the proxy URL or API key."
       },
       "user": {
         "data": {
+          "url": "Proxy URL",
           "api_key": "API key"
         },
         "data_description": {
-          "api_key": "Your Anthropic API key."
+          "url": "Base URL of your Anthropic-compatible proxy, for example `http://192.168.1.50:8317`. A trailing `/v1` is removed.",
+          "api_key": "An API key your proxy accepts (for CLIProxyAPI, one of the `access.api-keys` entries)."
         },
-        "description": "Set up Anthropic integration by providing your Anthropic API key. Instructions to obtain an API key can be found in [the documentation]({instructions_url})."
+        "description": "Connect Home Assistant to Claude through an Anthropic-compatible proxy such as CLIProxyAPI. See [the documentation]({instructions_url})."
       }
     }
   },
@@ -171,10 +180,10 @@
   },
   "exceptions": {
     "api_authentication_error": {
-      "message": "Authentication error with Anthropic API: {message}. Reauthentication required."
+      "message": "The proxy rejected the API key: {message}. Reauthentication required."
     },
     "api_error": {
-      "message": "Anthropic API error: {message}."
+      "message": "Proxy or Claude API error: {message}."
     },
     "api_refusal": {
       "message": "Potential policy violation detected."

@@ -1,0 +1,23 @@
+Claude (via proxy) for Home Assistant
+
+This project is a modified copy of the `anthropic` integration from Home
+Assistant Core (https://github.com/home-assistant/core), Copyright Home
+Assistant contributors, licensed under the Apache License, Version 2.0.
+
+The files under custom_components/claude_proxy/ and tests/ come from
+homeassistant/components/anthropic/ and tests/components/anthropic/ at the
+release recorded in the UPSTREAM file. Changes from that release:
+
+- The integration domain is `claude_proxy`, so it can run alongside the core
+  integration, and import paths point to `custom_components.claude_proxy`.
+- The config flow asks for a proxy base URL, which is passed to the Anthropic
+  SDK client.
+- proxy.py and model_capabilities.json fill in model metadata (lifecycle and
+  capabilities) that proxies leave out of `GET /v1/models`.
+- Translations are resolved into translations/en.json, and user-facing text is
+  reworded for proxy setups.
+
+The full set of changes is the git diff between the `upstream` and `main`
+branches of this repository.
+
+This project is not affiliated with or endorsed by Anthropic or Home Assistant.

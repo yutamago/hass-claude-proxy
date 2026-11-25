@@ -3,9 +3,8 @@
 from typing import TYPE_CHECKING, Any
 
 from anthropic import __title__, __version__
-
 from homeassistant.components.diagnostics import async_redact_data, entity_entry_as_dict
-from homeassistant.const import CONF_API_KEY, CONF_PROMPT
+from homeassistant.const import CONF_API_KEY, CONF_PROMPT, CONF_URL
 from homeassistant.helpers import entity_registry as er
 
 from .const import (
@@ -23,6 +22,7 @@ if TYPE_CHECKING:
 
 TO_REDACT = {
     CONF_API_KEY,
+    CONF_URL,
     CONF_PROMPT,
     CONF_WEB_SEARCH_CITY,
     CONF_WEB_SEARCH_REGION,

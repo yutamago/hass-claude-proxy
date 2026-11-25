@@ -1,0 +1,50 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hassfest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: home-assistant/actions/hassfest@master
+
+  hacs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: hacs/action@main
+        with:
+          category: integration
+          # Custom integrations are not in the home-assistant/brands repository.
+          ignore: brands
+
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.14"
+      - name: Install
+        run: |
+          uv venv
+          uv pip install -r requirements_test.txt
+      - name: Lint
+        run: |
+          uv run --no-sync ruff check custom_components tests scripts
+          uv run --no-sync ruff format --check custom_components/claude_proxy/proxy.py tests/test_proxy.py scripts
+      - name: Check capability table is current
+        run: |
+          uv run --no-sync python scripts/gen_capabilities.py
+          git diff --exit-code custom_components/claude_proxy/model_capabilities.json
+      - name: Test
+        run: uv run --no-sync pytest -q -W ignore::DeprecationWarning

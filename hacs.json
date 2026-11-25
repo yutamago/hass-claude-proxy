@@ -1,0 +1,7 @@
+{
+  "name": "Claude (via proxy)",
+  "homeassistant": "2026.11.0",
+  "render_readme": true,
+  "zip_release": true,
+  "filename": "claude_proxy.zip"
+}

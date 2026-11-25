@@ -3,6 +3,7 @@
   dict({
     'data': dict({
       'api_key': '**REDACTED**',
+      'url': '**REDACTED**',
     }),
     'entities': dict({
       'ai_task.claude_ai_task': dict({

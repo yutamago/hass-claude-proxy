@@ -47,6 +47,7 @@ def mock_config_entry(hass: HomeAssistant) -> MockConfigEntry:
         title="Claude",
         domain=DOMAIN,
         data={
+            "url": "http://proxy.test:8317",
             "api_key": "bla",
         },
         version=2,

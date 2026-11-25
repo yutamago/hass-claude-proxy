@@ -1,0 +1,1424 @@
+{
+  "claude-fable-5": {
+    "line": "fable",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": true
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": true
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": true
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": true
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": false
+          },
+          "enabled": {
+            "supported": false
+          }
+        }
+      }
+    }
+  },
+  "claude-fable-5-1": {
+    "line": "fable",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": true
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": true
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": true
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": true
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": false
+          },
+          "enabled": {
+            "supported": false
+          }
+        }
+      }
+    }
+  },
+  "claude-fable-5-2": {
+    "line": "fable",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": true
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": true
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": true
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": true
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": false
+          },
+          "enabled": {
+            "supported": false
+          }
+        }
+      }
+    }
+  },
+  "claude-haiku-4-5": {
+    "line": "haiku",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": false
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": false
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": false
+        },
+        "low": {
+          "supported": false
+        },
+        "max": {
+          "supported": false
+        },
+        "medium": {
+          "supported": false
+        },
+        "supported": false,
+        "xhigh": {
+          "supported": false
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": false
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": true
+          },
+          "enabled": {
+            "supported": true
+          }
+        }
+      }
+    }
+  },
+  "claude-haiku-5-5": {
+    "line": "haiku",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": true
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": true
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": true
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": true
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": true
+          },
+          "enabled": {
+            "supported": false
+          }
+        }
+      }
+    }
+  },
+  "claude-mythos-5": {
+    "line": "fable",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": true
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": true
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": true
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": true
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": false
+          },
+          "enabled": {
+            "supported": false
+          }
+        }
+      }
+    }
+  },
+  "claude-mythos-5-1": {
+    "line": "fable",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": true
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": true
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": true
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": true
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": false
+          },
+          "enabled": {
+            "supported": false
+          }
+        }
+      }
+    }
+  },
+  "claude-mythos-5-2": {
+    "line": "fable",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": true
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": true
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": true
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": true
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": false
+          },
+          "enabled": {
+            "supported": false
+          }
+        }
+      }
+    }
+  },
+  "claude-opus-4-5": {
+    "line": "opus",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": false
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": false
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": false
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": false
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": true
+          },
+          "enabled": {
+            "supported": true
+          }
+        }
+      }
+    }
+  },
+  "claude-opus-4-6": {
+    "line": "opus",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": true
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": true
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": false
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": true
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": true
+          },
+          "enabled": {
+            "supported": true
+          }
+        }
+      }
+    }
+  },
+  "claude-opus-4-7": {
+    "line": "opus",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": true
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": true
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": true
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": true
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": true
+          },
+          "enabled": {
+            "supported": false
+          }
+        }
+      }
+    }
+  },
+  "claude-opus-4-8": {
+    "line": "opus",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": true
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": true
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": true
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": true
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": true
+          },
+          "enabled": {
+            "supported": false
+          }
+        }
+      }
+    }
+  },
+  "claude-opus-5": {
+    "line": "opus",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": true
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": true
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": true
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": true
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": true
+          },
+          "enabled": {
+            "supported": false
+          }
+        }
+      }
+    }
+  },
+  "claude-opus-5-5": {
+    "line": "opus",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": true
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": true
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": true
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": true
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": false
+          },
+          "enabled": {
+            "supported": false
+          }
+        }
+      }
+    }
+  },
+  "claude-sonnet-4-5": {
+    "line": "sonnet",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": false
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": false
+        },
+        "low": {
+          "supported": false
+        },
+        "max": {
+          "supported": false
+        },
+        "medium": {
+          "supported": false
+        },
+        "supported": false,
+        "xhigh": {
+          "supported": false
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": false
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": true
+          },
+          "enabled": {
+            "supported": true
+          }
+        }
+      }
+    }
+  },
+  "claude-sonnet-4-6": {
+    "line": "sonnet",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": true
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": true
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": false
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": true
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": true
+          },
+          "enabled": {
+            "supported": true
+          }
+        }
+      }
+    }
+  },
+  "claude-sonnet-5": {
+    "line": "sonnet",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": true
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": true
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": true
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": true
+          },
+          "between_tools": {
+            "supported": false
+          },
+          "disabled": {
+            "supported": true
+          },
+          "enabled": {
+            "supported": false
+          }
+        }
+      }
+    }
+  },
+  "claude-sonnet-5-5": {
+    "line": "sonnet",
+    "capabilities": {
+      "batch": {
+        "supported": true
+      },
+      "citations": {
+        "supported": true
+      },
+      "code_execution": {
+        "supported": true
+      },
+      "context_management": {
+        "clear_thinking_20251015": {
+          "supported": true
+        },
+        "clear_tool_uses_20250919": {
+          "supported": true
+        },
+        "compact_20260112": {
+          "supported": true
+        },
+        "supported": true
+      },
+      "effort": {
+        "high": {
+          "supported": true
+        },
+        "low": {
+          "supported": true
+        },
+        "max": {
+          "supported": true
+        },
+        "medium": {
+          "supported": true
+        },
+        "supported": true,
+        "xhigh": {
+          "supported": true
+        }
+      },
+      "image_input": {
+        "supported": true
+      },
+      "pdf_input": {
+        "supported": true
+      },
+      "server_tools": {
+        "code_execution": {
+          "supported": true
+        },
+        "supported": true,
+        "web_search": {
+          "supported": true
+        }
+      },
+      "structured_outputs": {
+        "supported": true
+      },
+      "thinking": {
+        "supported": true,
+        "types": {
+          "adaptive": {
+            "supported": true
+          },
+          "between_tools": {
+            "supported": true
+          },
+          "disabled": {
+            "supported": false
+          },
+          "enabled": {
+            "supported": false
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+[project]
+name = "claude-proxy"
+version = "0.1.0"
+description = "Home Assistant integration for Claude through an Anthropic-compatible proxy"
+requires-python = ">=3.14.2"
+license = "Apache-2.0"
+
+
+[tool.pytest.ini_options]
+# The respx plugin imports httpx before Home Assistant aliases it to httpx2.
+addopts = "-p no:respx"
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.ruff]
+target-version = "py314"
+extend-exclude = ["tests/snapshots"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+known-first-party = ["homeassistant", "custom_components"]
+combine-as-imports = true
+
+[tool.ruff.lint.per-file-ignores]
+# Files synced from home-assistant/core keep upstream's import order; the domain
+# rename changes how they sort, and reordering them would only cause merge noise.
+"custom_components/claude_proxy/*.py" = ["I001"]
+"tests/*.py" = ["I001"]
+"custom_components/claude_proxy/proxy.py" = []
+"tests/test_proxy.py" = []

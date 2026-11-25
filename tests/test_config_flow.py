@@ -51,7 +51,13 @@ from custom_components.claude_proxy.const import (
     DEFAULT_CONVERSATION_NAME,
     DOMAIN,
 )
-from homeassistant.const import CONF_API_KEY, CONF_LLM_HASS_API, CONF_NAME, CONF_PROMPT
+from homeassistant.const import (
+    CONF_API_KEY,
+    CONF_LLM_HASS_API,
+    CONF_NAME,
+    CONF_PROMPT,
+    CONF_URL,
+)
 from homeassistant.core import HomeAssistant
 from homeassistant.data_entry_flow import FlowResultType, InvalidData
 
@@ -97,12 +103,14 @@ async def test_form(
         result2 = await hass.config_entries.flow.async_configure(
             result["flow_id"],
             {
+                "url": "http://proxy.test:8317",
                 "api_key": "bla",
             },
         )
 
     assert result2["type"] is FlowResultType.CREATE_ENTRY
     assert result2["data"] == {
+        "url": "http://proxy.test:8317",
         "api_key": "bla",
     }
     assert result2["options"] == {}
@@ -141,6 +149,7 @@ async def test_duplicate_entry(
         result = await hass.config_entries.flow.async_configure(
             result["flow_id"],
             {
+                CONF_URL: mock_config_entry.data[CONF_URL],
                 CONF_API_KEY: mock_config_entry.data[CONF_API_KEY],
             },
         )
@@ -318,6 +327,7 @@ async def test_api_error(
         result = await hass.config_entries.flow.async_configure(
             result["flow_id"],
             {
+                "url": "http://proxy.test:8317",
                 "api_key": "bla",
             },
         )
@@ -332,12 +342,14 @@ async def test_api_error(
         result = await hass.config_entries.flow.async_configure(
             result["flow_id"],
             {
+                "url": "http://proxy.test:8317",
                 "api_key": "blabla",
             },
         )
 
     assert result["type"] is FlowResultType.CREATE_ENTRY
     assert result["data"] == {
+        "url": "http://proxy.test:8317",
         "api_key": "blabla",
     }
 
@@ -1796,7 +1808,7 @@ async def test_update_api_key(
     ):
         result = await hass.config_entries.flow.async_configure(
             result["flow_id"],
-            {CONF_API_KEY: "new_api_key"},
+            {CONF_URL: "http://proxy.test:8317", CONF_API_KEY: "new_api_key"},
         )
         await hass.async_block_till_done()
 
@@ -1862,7 +1874,8 @@ async def test_update_api_key_error(
     )
     with patch("anthropic.resources.models.AsyncModels.list", side_effect=side_effect):
         result = await hass.config_entries.flow.async_configure(
-            result["flow_id"], {CONF_API_KEY: "invalid_api_key"}
+            result["flow_id"],
+            {CONF_URL: "http://proxy.test:8317", CONF_API_KEY: "invalid_api_key"},
         )
 
     assert result["type"] is FlowResultType.FORM
@@ -1872,7 +1885,8 @@ async def test_update_api_key_error(
 
     with patch("anthropic.resources.models.AsyncModels.list", new_callable=AsyncMock):
         result = await hass.config_entries.flow.async_configure(
-            result["flow_id"], {CONF_API_KEY: "new_api_key"}
+            result["flow_id"],
+            {CONF_URL: "http://proxy.test:8317", CONF_API_KEY: "new_api_key"},
         )
         await hass.async_block_till_done()
 
@@ -1894,13 +1908,17 @@ async def test_update_api_key_duplicate(
     source: str,
 ) -> None:
     """Test a key belonging to another entry cannot be used."""
-    MockConfigEntry(domain=DOMAIN, data={CONF_API_KEY: "other_key"}).add_to_hass(hass)
+    MockConfigEntry(
+        domain=DOMAIN,
+        data={CONF_URL: "http://proxy.test:8317", CONF_API_KEY: "other_key"},
+    ).add_to_hass(hass)
     result = await hass.config_entries.flow.async_init(
         DOMAIN,
         context={"source": source, "entry_id": mock_config_entry.entry_id},
     )
     result = await hass.config_entries.flow.async_configure(
-        result["flow_id"], {CONF_API_KEY: "other_key"}
+        result["flow_id"],
+        {CONF_URL: "http://proxy.test:8317", CONF_API_KEY: "other_key"},
     )
 
     assert result["type"] is FlowResultType.ABORT

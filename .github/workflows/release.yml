@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  zip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set manifest version from the release tag
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          version="${TAG#v}"
+          jq --arg v "$version" '.version = $v' custom_components/claude_proxy/manifest.json > manifest.tmp
+          mv manifest.tmp custom_components/claude_proxy/manifest.json
+      - name: Build zip
+        run: |
+          cd custom_components/claude_proxy
+          zip -r "$GITHUB_WORKSPACE/claude_proxy.zip" . -x '__pycache__/*'
+      - name: Upload to release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name }}
+        run: gh release upload "$TAG" claude_proxy.zip --clobber

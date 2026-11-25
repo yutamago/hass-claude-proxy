@@ -42,8 +42,15 @@ def ensure_clone(core: Path, tag: str) -> None:
     if not (core / ".git").exists():
         core.parent.mkdir(parents=True, exist_ok=True)
         subprocess.run(
-            ["git", "clone", "-q", "--filter=blob:none", "--no-checkout", CORE_REPO,
-             str(core)],
+            [
+                "git",
+                "clone",
+                "-q",
+                "--filter=blob:none",
+                "--no-checkout",
+                CORE_REPO,
+                str(core),
+            ],
             check=True,
         )
     git(core, "fetch", "-q", "--filter=blob:none", "origin", "tag", tag)
@@ -65,9 +72,7 @@ def rewrite_python(text: str) -> str:
     text = text.replace(
         f"homeassistant.components.{UPSTREAM_DOMAIN}", f"custom_components.{DOMAIN}"
     )
-    return text.replace(
-        f'DOMAIN = "{UPSTREAM_DOMAIN}"', f'DOMAIN = "{DOMAIN}"'
-    )
+    return text.replace(f'DOMAIN = "{UPSTREAM_DOMAIN}"', f'DOMAIN = "{DOMAIN}"')
 
 
 def rewrite_tests(text: str) -> str:
@@ -159,8 +164,10 @@ def main() -> int:
     translations = DST_COMPONENT / "translations" / "en.json"
     translations.parent.mkdir(parents=True, exist_ok=True)
     translations.write_text(
-        json.dumps(resolve_translations(core, tag, strings), indent=2,
-                   ensure_ascii=False) + "\n"
+        json.dumps(
+            resolve_translations(core, tag, strings), indent=2, ensure_ascii=False
+        )
+        + "\n"
     )
 
     for src in list_files(core, tag, SRC_TESTS):

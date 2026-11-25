@@ -7,15 +7,15 @@ from typing import Literal, override
 
 import anthropic
 from anthropic.resources.messages.messages import DEPRECATED_MODELS
-
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_API_KEY
+from homeassistant.const import CONF_API_KEY, CONF_URL
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers.httpx_client import get_async_client
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 from homeassistant.util import dt as dt_util
 
+from . import proxy
 from .const import DOMAIN, LOGGER
 
 UPDATE_INTERVAL_CONNECTED = dt.timedelta(hours=12)
@@ -42,13 +42,14 @@ type AnthropicConfigEntry = ConfigEntry[AnthropicCoordinator]
 
 
 async def async_create_client(
-    hass: HomeAssistant, api_key: str
+    hass: HomeAssistant, api_key: str, base_url: str | None = None
 ) -> anthropic.AsyncAnthropic:
-    """Create an Anthropic client."""
+    """Create an Anthropic client pointed at the proxy."""
     return await hass.async_add_executor_job(
         partial(
             anthropic.AsyncAnthropic,
             api_key=api_key,
+            base_url=proxy.normalize_base_url(base_url) if base_url else None,
             http_client=get_async_client(hass),
         )
     )
@@ -110,8 +111,11 @@ class AnthropicCoordinator(DataUpdateCoordinator[list[anthropic.types.ModelInfo]
     async def _async_setup(self) -> None:
         """Set up the coordinator."""
         self._client = await async_create_client(
-            self.hass, self.config_entry.data[CONF_API_KEY]
+            self.hass,
+            self.config_entry.data[CONF_API_KEY],
+            self.config_entry.data.get(CONF_URL),
         )
+        await self.hass.async_add_executor_job(proxy.preload)
 
     async def async_update_data(self) -> list[anthropic.types.ModelInfo]:
         """Fetch model list from the API.
@@ -161,7 +165,8 @@ class AnthropicCoordinator(DataUpdateCoordinator[list[anthropic.types.ModelInfo]
         """Fetch all pages for the requested lifecycle stages."""
         try:
             result = await self.client.models.list(lifecycle=lifecycle, timeout=10.0)
-            return [model async for model in result]
+            # Proxies omit lifecycle/capabilities and ignore the lifecycle filter.
+            return proxy.filter_models([model async for model in result], lifecycle)
         except anthropic.APITimeoutError as err:
             raise TimeoutError(err.message or str(err)) from err
         except anthropic.AuthenticationError as err:

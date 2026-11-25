@@ -6,8 +6,6 @@ import logging
 from typing import TYPE_CHECKING, Any, cast, override
 
 import anthropic
-import probatio
-
 from homeassistant import data_entry_flow
 from homeassistant.components.zone import ENTITY_ID_HOME
 from homeassistant.config_entries import (
@@ -24,6 +22,7 @@ from homeassistant.const import (
     CONF_LLM_HASS_API,
     CONF_NAME,
     CONF_PROMPT,
+    CONF_URL,
     EntityStateAttribute,
 )
 from homeassistant.core import HomeAssistant, callback
@@ -37,7 +36,9 @@ from homeassistant.helpers.selector import (
     TemplateSelector,
 )
 from homeassistant.helpers.typing import VolDictType
+import probatio
 
+from . import proxy
 from .const import (
     CONF_CHAT_MODEL,
     CONF_CODE_EXECUTION,
@@ -81,6 +82,7 @@ _LOGGER = logging.getLogger(__name__)
 
 STEP_USER_DATA_SCHEMA = probatio.Schema(
     {
+        probatio.Required(CONF_URL): str,
         probatio.Required(probatio.Secret(CONF_API_KEY)): str,
     }
 )
@@ -101,8 +103,17 @@ async def validate_input(hass: HomeAssistant, data: dict[str, Any]) -> None:
 
     Data has the keys from STEP_USER_DATA_SCHEMA with values provided by the user.
     """
-    client = await async_create_client(hass, data[CONF_API_KEY])
+    client = await async_create_client(hass, data[CONF_API_KEY], data[CONF_URL])
     await client.models.list(timeout=10.0)
+
+
+def _is_http_url(url: str) -> bool:
+    """Return True for an absolute http(s) URL."""
+    try:
+        cv.url(url)
+    except probatio.Invalid:
+        return False
+    return True
 
 
 class AnthropicConfigFlow(ConfigFlow, domain=DOMAIN):
@@ -119,6 +130,13 @@ class AnthropicConfigFlow(ConfigFlow, domain=DOMAIN):
         errors: dict[str, str] = {}
 
         if user_input is not None:
+            user_input = {
+                **user_input,
+                CONF_URL: proxy.normalize_base_url(user_input[CONF_URL]),
+            }
+        if user_input is not None and not _is_http_url(user_input[CONF_URL]):
+            errors[CONF_URL] = "invalid_url"
+        elif user_input is not None:
             self._async_abort_entries_match(user_input)
             try:
                 await validate_input(self.hass, user_input)
@@ -126,6 +144,9 @@ class AnthropicConfigFlow(ConfigFlow, domain=DOMAIN):
                 errors["base"] = "timeout_connect"
             except anthropic.APIConnectionError:
                 errors["base"] = "cannot_connect"
+            except anthropic.AuthenticationError:
+                # Proxies may answer 401 with a non-Anthropic error body.
+                errors["base"] = "authentication_error"
             except anthropic.APIStatusError as e:
                 errors["base"] = "unknown"
                 if (
@@ -176,13 +197,22 @@ class AnthropicConfigFlow(ConfigFlow, domain=DOMAIN):
         elif self.source == SOURCE_RECONFIGURE:
             step_id = "reconfigure"
 
+        suggested: Mapping[str, Any] = user_input or {}
+        if not suggested and self.source == SOURCE_REAUTH:
+            suggested = {CONF_URL: self._get_reauth_entry().data.get(CONF_URL)}
+        elif not suggested and self.source == SOURCE_RECONFIGURE:
+            suggested = {CONF_URL: self._get_reconfigure_entry().data.get(CONF_URL)}
+
         # pylint: disable-next=home-assistant-step_id-match-method
         return self.async_show_form(
             step_id=step_id,
-            data_schema=STEP_USER_DATA_SCHEMA,
+            data_schema=self.add_suggested_values_to_schema(
+                STEP_USER_DATA_SCHEMA,
+                {k: v for k, v in suggested.items() if k != CONF_API_KEY},
+            ),
             errors=errors or None,
             description_placeholders={
-                "instructions_url": "https://www.home-assistant.io/integrations/anthropic/#generating-an-api-key",
+                "instructions_url": "https://github.com/yutamago/hass-claude-proxy#setup",
             },
         )
 
@@ -359,8 +389,10 @@ class ConversationSubentryFlowHandler(ConfigSubentryFlow):
                 # Couldn't find the model in the cached list, try to fetch it directly
                 client = coordinator.client
                 try:
-                    self.model_info = await client.models.retrieve(
-                        self.options[CONF_CHAT_MODEL], timeout=10.0
+                    self.model_info = proxy.normalize_model(
+                        await client.models.retrieve(
+                            self.options[CONF_CHAT_MODEL], timeout=10.0
+                        )
                     )
                 except anthropic.NotFoundError:
                     errors[CONF_CHAT_MODEL] = "model_not_found"
@@ -593,7 +625,9 @@ class ConversationSubentryFlowHandler(ConfigSubentryFlow):
         zone_home = self.hass.states.get(ENTITY_ID_HOME)
         if zone_home is not None:
             client = await async_create_client(
-                self.hass, self._get_entry().data[CONF_API_KEY]
+                self.hass,
+                self._get_entry().data[CONF_API_KEY],
+                self._get_entry().data.get(CONF_URL),
             )
             location_schema = probatio.Schema(
                 {
