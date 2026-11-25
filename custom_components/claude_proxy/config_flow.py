@@ -431,7 +431,7 @@ class ConversationSubentryFlowHandler(ConfigSubentryFlow):
         step_schema: VolDictType = {
             probatio.Optional(
                 CONF_MAX_TOKENS,
-                default=self.options.get(CONF_MAX_TOKENS, DEFAULT[CONF_MAX_TOKENS]),
+                default=self.options.get(CONF_MAX_TOKENS, proxy.AUTO_MAX_TOKENS),
             ): probatio.All(
                 NumberSelector({"min": 0, "max": self.model_info.max_tokens}),
                 probatio.Coerce(int),
@@ -563,7 +563,10 @@ class ConversationSubentryFlowHandler(ConfigSubentryFlow):
         if user_input is not None:
             if self.options.get(CONF_THINKING_TYPE) == "enabled" and self.options[
                 CONF_THINKING_BUDGET
-            ] >= self.options.get(CONF_MAX_TOKENS, DEFAULT[CONF_MAX_TOKENS]):
+            ] >= proxy.resolve_max_tokens(
+                {CONF_MAX_TOKENS: proxy.AUTO_MAX_TOKENS} | self.options,
+                self.model_info,
+            ):
                 errors[CONF_THINKING_BUDGET] = "thinking_budget_too_large"
             if CONF_EFFORT in self.options and not is_effort_compatible_with_thinking(
                 self.model_info,

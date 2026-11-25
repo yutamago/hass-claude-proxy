@@ -106,11 +106,11 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.util import dt as dt_util
 from homeassistant.util.json import JsonArrayType, JsonObjectType
 
+from . import proxy
 from .const import (
     CONF_CHAT_MODEL,
     CONF_CODE_EXECUTION,
     CONF_EFFORT,
-    CONF_MAX_TOKENS,
     CONF_PROMPT_CACHING,
     CONF_THINKING_BUDGET,
     CONF_THINKING_TYPE,
@@ -961,7 +961,7 @@ class AnthropicBaseLLMEntity(CoordinatorEntity[AnthropicCoordinator]):
         model_args: MessageCreateParamsStreaming = {
             "model": model,
             "messages": messages,
-            "max_tokens": options[CONF_MAX_TOKENS],
+            "max_tokens": proxy.resolve_max_tokens(options, self.model_info),
             "system": system.content,
             "stream": True,
             "container": container_id,

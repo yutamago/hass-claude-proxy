@@ -7,7 +7,7 @@ return structured data. Each step uses a small Claude request.
 
 Usage:
   CLAUDE_PROXY_URL=http://host:8317 CLAUDE_PROXY_KEY_FILE=~/.config/claude_proxy/key \\
-      .venv/bin/python scripts/live_smoke.py [model]
+      .venv/bin/python scripts/live_smoke.py [model] [effort]
 """
 
 from __future__ import annotations
@@ -45,7 +45,7 @@ def check(ok: bool, message: str) -> None:
         raise SystemExit(1)
 
 
-async def main(model: str | None) -> None:
+async def main(model: str | None, effort: str | None) -> None:
     """Run the smoke test."""
     url = os.environ["CLAUDE_PROXY_URL"]
     key = Path(os.environ["CLAUDE_PROXY_KEY_FILE"]).expanduser().read_text().strip()
@@ -92,6 +92,8 @@ async def main(model: str | None) -> None:
                             **subentry.data,
                             "recommended": False,
                             "chat_model": model,
+                            "max_tokens": 0,  # automatic
+                            **({"effort": effort} if effort else {}),
                         },
                     )
                 await hass.config_entries.async_reload(entry.entry_id)
@@ -145,4 +147,5 @@ async def main(model: str | None) -> None:
 
 
 if __name__ == "__main__":
-    asyncio.run(main(sys.argv[1] if len(sys.argv) > 1 else None))
+    args = sys.argv[1:] + [None, None]
+    asyncio.run(main(args[0], args[1]))

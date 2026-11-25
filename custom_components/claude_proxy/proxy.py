@@ -13,7 +13,7 @@ new models get their options without a release.
 from __future__ import annotations
 
 import asyncio
-from collections.abc import Iterable
+from collections.abc import Iterable, Mapping
 import datetime as dt
 import json
 import logging
@@ -29,6 +29,13 @@ from homeassistant.helpers.httpx_client import get_async_client
 from homeassistant.helpers.storage import Store
 from homeassistant.util import dt as dt_util
 from homeassistant.util.hass_dict import HassKey
+
+from .const import (
+    CONF_EFFORT,
+    CONF_MAX_TOKENS,
+    CONF_THINKING_BUDGET,
+    CONF_THINKING_TYPE,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -46,6 +53,44 @@ RETRY_INTERVAL = dt.timedelta(hours=1)
 STORAGE_KEY = "claude_proxy.model_capabilities"
 STORAGE_VERSION = 1
 DATA_TABLE: HassKey[CapabilityTable] = HassKey("claude_proxy_capabilities")
+
+
+# Max tokens of 0 means "choose from the model and effort". The limit only stops
+# runaway answers; Claude isn't told about it and only the tokens it uses count, so
+# it is generous. Claude Code always sends the model's maximum.
+AUTO_MAX_TOKENS = 0
+EFFORT_MAX_TOKENS: dict[str, int | None] = {
+    "low": 8_000,
+    "medium": 16_000,
+    "high": 32_000,
+    "xhigh": 64_000,
+    "max": None,  # the model's maximum
+}
+NO_EFFORT_MAX_TOKENS = 16_000
+UNKNOWN_MODEL_MAX_TOKENS = 64_000
+THINKING_BUDGET_HEADROOM = 4_000
+
+
+def resolve_max_tokens(options: Mapping[str, Any], model_info: ModelInfo) -> int:
+    """Return the max_tokens to send, filling in the automatic value."""
+    if value := options.get(CONF_MAX_TOKENS):
+        return int(value)
+    model_max = model_info.max_tokens or UNKNOWN_MODEL_MAX_TOKENS
+    effort = options.get(CONF_EFFORT)
+    supports_effort = bool(
+        model_info.capabilities and model_info.capabilities.effort.supported
+    )
+    if supports_effort and effort in EFFORT_MAX_TOKENS:
+        wanted = EFFORT_MAX_TOKENS[effort] or model_max
+    else:
+        wanted = NO_EFFORT_MAX_TOKENS
+    if options.get(CONF_THINKING_TYPE) == "enabled":
+        # A fixed thinking budget must fit below max_tokens, with room for the answer.
+        wanted = max(
+            wanted,
+            int(options.get(CONF_THINKING_BUDGET) or 0) + THINKING_BUDGET_HEADROOM,
+        )
+    return min(wanted, model_max)
 
 
 def normalize_base_url(url: str) -> str:

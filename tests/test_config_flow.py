@@ -1393,7 +1393,7 @@ async def test_invalid_model(
                 CONF_LLM_HASS_API: [],
                 CONF_PROMPT_CACHING: "off",
                 CONF_CHAT_MODEL: "claude-haiku-4-5",
-                CONF_MAX_TOKENS: DEFAULT[CONF_MAX_TOKENS],
+                CONF_MAX_TOKENS: 0,  # automatic (claude_proxy)
                 CONF_THINKING_BUDGET: DEFAULT[CONF_THINKING_BUDGET],
                 CONF_THINKING_TYPE: "enabled",
                 CONF_WEB_FETCH: False,
@@ -1499,7 +1499,7 @@ async def test_invalid_model(
                 CONF_LLM_HASS_API: [],
                 CONF_PROMPT_CACHING: "prompt",
                 CONF_CHAT_MODEL: "claude-opus-4-7",
-                CONF_MAX_TOKENS: DEFAULT[CONF_MAX_TOKENS],
+                CONF_MAX_TOKENS: 0,  # automatic (claude_proxy)
                 CONF_EFFORT: "xhigh",
                 CONF_THINKING_TYPE: "adaptive",
                 CONF_TOOL_SEARCH: False,
@@ -1533,7 +1533,7 @@ async def test_invalid_model(
                 CONF_LLM_HASS_API: [],
                 CONF_PROMPT_CACHING: "automatic",
                 CONF_CHAT_MODEL: "claude-haiku-4-5",
-                CONF_MAX_TOKENS: DEFAULT[CONF_MAX_TOKENS],
+                CONF_MAX_TOKENS: 0,  # automatic (claude_proxy)
                 CONF_THINKING_BUDGET: DEFAULT[CONF_THINKING_BUDGET],
                 CONF_THINKING_TYPE: "enabled",
                 CONF_WEB_SEARCH: False,

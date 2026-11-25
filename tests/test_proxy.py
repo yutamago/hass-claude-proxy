@@ -14,9 +14,12 @@ from pytest_homeassistant.common import MockConfigEntry
 
 from custom_components.claude_proxy import proxy
 from custom_components.claude_proxy.const import DOMAIN
+
+from . import create_content_block
 from homeassistant import config_entries
+from homeassistant.components import conversation
 from homeassistant.const import CONF_API_KEY, CONF_URL
-from homeassistant.core import HomeAssistant
+from homeassistant.core import Context, HomeAssistant
 from homeassistant.data_entry_flow import FlowResultType
 from homeassistant.setup import async_setup_component
 
@@ -309,3 +312,89 @@ async def test_form_proxy_auth_error(hass: HomeAssistant) -> None:
         )
     assert result["type"] is FlowResultType.FORM
     assert result["errors"] == {"base": "authentication_error"}
+
+
+@pytest.mark.parametrize(
+    ("model_id", "options", "expected"),
+    [
+        ("claude-haiku-5-5", {"effort": "low"}, 8_000),
+        ("claude-sonnet-5-5", {"effort": "medium"}, 16_000),
+        ("claude-opus-5-5", {"effort": "high"}, 32_000),
+        ("claude-opus-5-5", {"effort": "xhigh"}, 64_000),
+        ("claude-opus-5-5", {"effort": "max"}, 128_000),
+        # A number the user typed is kept.
+        ("claude-opus-5-5", {"effort": "max", "max_tokens": 3000}, 3000),
+        # Haiku 4.5 has no effort levels.
+        ("claude-haiku-4-5-20251001", {"effort": "high"}, 16_000),
+        # A fixed thinking budget gets room for the answer on top.
+        (
+            "claude-sonnet-4-5-20250929",
+            {"thinking_type": "enabled", "thinking_budget": 20_000},
+            24_000,
+        ),
+        # Never above what the model allows.
+        ("claude-3-5-haiku-20241022", {}, 8_192),
+        # Unknown models get the no-effort value.
+        ("other-provider-model", {"effort": "max"}, 16_000),
+    ],
+)
+async def test_resolve_max_tokens(
+    table: proxy.CapabilityTable,
+    model_id: str,
+    options: dict[str, Any],
+    expected: int,
+) -> None:
+    """Test the automatic max_tokens value."""
+    raw = next(
+        (raw for raw in PROXY_MODELS if raw["id"] == model_id),
+        {"id": model_id, "type": "model", "max_tokens": 128_000},
+    )
+    model = proxy.normalize_model(proxy_model(raw), table)
+    assert proxy.resolve_max_tokens({"max_tokens": 0} | options, model) == expected
+
+
+async def test_request_uses_automatic_max_tokens(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_init_component: None,
+    mock_create_stream: AsyncMock,
+) -> None:
+    """Test a conversation request sends the limit chosen from model and effort."""
+    subentry = next(
+        s
+        for s in mock_config_entry.subentries.values()
+        if s.subentry_type == "conversation"
+    )
+    hass.config_entries.async_update_subentry(
+        mock_config_entry,
+        subentry,
+        data={
+            **subentry.data,
+            "recommended": False,
+            "chat_model": "claude-opus-5-5",
+            "effort": "high",
+            "max_tokens": 0,
+        },
+    )
+    await hass.config_entries.async_reload(mock_config_entry.entry_id)
+    await hass.async_block_till_done()
+    mock_create_stream.return_value = [create_content_block(0, ["ok"])]
+
+    await conversation.async_converse(
+        hass, "hello", None, Context(), agent_id="conversation.claude_conversation"
+    )
+    assert mock_create_stream.call_args.kwargs["max_tokens"] == 32_000
+
+
+async def test_recommended_keeps_upstream_max_tokens(
+    hass: HomeAssistant,
+    mock_config_entry: MockConfigEntry,
+    mock_init_component: None,
+    mock_create_stream: AsyncMock,
+) -> None:
+    """Test recommended settings still send Home Assistant's 3000-token limit."""
+    mock_create_stream.return_value = [create_content_block(0, ["ok"])]
+    await conversation.async_converse(
+        hass, "hello", None, Context(), agent_id="conversation.claude_conversation"
+    )
+    assert mock_create_stream.call_args.kwargs["max_tokens"] == 3000

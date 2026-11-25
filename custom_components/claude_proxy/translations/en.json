@@ -97,7 +97,7 @@
           "data_description": {
             "code_execution": "Allow the model to execute code in a secure sandbox environment, enabling it to analyze data and perform complex calculations.",
             "effort": "Control how many tokens Claude uses when responding, trading off between response thoroughness and token efficiency",
-            "max_tokens": "Limit the number of response tokens.",
+            "max_tokens": "Most tokens Claude may produce per request, including thinking. 0 picks a limit from the effort: 8,000 at low, 16,000 at medium, 32,000 at high, 64,000 at X-High and the model's maximum at max. Only the tokens Claude uses count, so a high limit doesn't make answers longer.",
             "thinking_budget": "Tokens available for extended thinking when the thinking type is enabled. Must be less than the maximum response tokens.",
             "thinking_type": "Controls when Claude spends additional tokens reasoning through requests or tool results.",
             "tool_search": "Enable dynamic tool discovery instead of preloading all tools into the context",
@@ -163,7 +163,7 @@
           "data_description": {
             "code_execution": "Allow the model to execute code in a secure sandbox environment, enabling it to analyze data and perform complex calculations.",
             "effort": "Control how many tokens Claude uses when responding, trading off between response thoroughness and token efficiency",
-            "max_tokens": "Limit the number of response tokens.",
+            "max_tokens": "Most tokens Claude may produce per request, including thinking. 0 picks a limit from the effort: 8,000 at low, 16,000 at medium, 32,000 at high, 64,000 at X-High and the model's maximum at max. Only the tokens Claude uses count, so a high limit doesn't make answers longer.",
             "thinking_budget": "Tokens available for extended thinking when the thinking type is enabled. Must be less than the maximum response tokens.",
             "thinking_type": "Controls when Claude spends additional tokens reasoning through requests or tool results.",
             "tool_search": "Enable dynamic tool discovery instead of preloading all tools into the context",
